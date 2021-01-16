@@ -2,7 +2,10 @@
   "name": "gibberoni",
   "version": "0.1.0",
   "private": true,
-  "main": "public/main.js",
+  "author": "Jeff Ng",
+  "description": "A memey Unicode text converter",
+  "main": "public/electron.js",
+  "homepage": "./",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -10,6 +13,7 @@
     "@types/jest": "^26.0.15",
     "@types/node": "^12.0.0",
     "@types/react-dom": "^16.9.8",
+    "electron-is-dev": "^1.2.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
@@ -17,11 +21,26 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "nf start -p 3000",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "electron-start": "electron ."
+    "electron": "electron .",
+    "electron-start": "node public/start-react",
+    "react-start": "react-scripts start",
+    "pack": "npm run build && electron-builder build --dir",
+    "dist": "npm run build && electron-builder build",
+    "postinstall": "install-app-deps"
+  },
+  "build": {
+    "appId": "com.50jeffng.gibberoni",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +62,7 @@
   },
   "devDependencies": {
     "@types/react": "^16.14.2",
-    "electron": "^11.2.0"
+    "electron": "^11.2.0",
+    "electron-builder": "^22.9.1"
   }
 }
