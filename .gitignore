@@ -14,6 +14,9 @@
 # distribution
 /dist
 
+# linting
+.eslintcache
+
 # misc
 .DS_Store
 .env.local
