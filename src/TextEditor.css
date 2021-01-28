@@ -1,0 +1,21 @@
+.outputContainer {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid grey;
+    margin: 2px;
+    background-color: white;
+}
+
+.outputText {
+    flex: 1;
+    border: none;
+}
+
+.copyBtn {
+    border: none;
+    background-color: white;
+}
+
+.copyBtn:hover {
+    background-color: lightgrey;
+}

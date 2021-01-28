@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import './TextEditor.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function TextEditor() {
     const [inputText, setInputText] = React.useState('');
@@ -17,7 +18,10 @@ function TextEditor() {
         <form onSubmit={handleSubmit}>
             <input type="text" value={inputText} onChange={event=>setInputText(event.target.value)}/>
             <input type="submit" value="gibber it!"/>
-            <input type="text" value={outputText} readOnly={true} ref={outputTextRef} onClick={copyToClipboard}/>
+            <div className="outputContainer">
+                <input className="outputText" type="text" value={outputText} readOnly={true} ref={outputTextRef}/>
+                <button className="copyBtn" title="Copy to clipboard" onClick={copyToClipboard}><FontAwesomeIcon icon={["far", "clipboard"]}/></button>
+            </div>
         </form>
     );
 }
