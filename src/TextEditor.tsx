@@ -1,13 +1,22 @@
 import React, { useRef } from 'react';
 import './TextEditor.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Translator from './translator';
+
+const translator = new Translator();
 
 function TextEditor() {
     const [inputText, setInputText] = React.useState('');
     const [outputText, setOutputText] = React.useState('');
+    const [translateMode, setTranslateMode] = React.useState('bold');
     const outputTextRef = useRef<HTMLInputElement>(null);
     const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
-        setOutputText(inputText);
+        if (translator.enabled) {
+            setOutputText(translator.translate(inputText, translateMode));
+        }
+        else {
+            setOutputText(inputText);
+        }
         e.preventDefault();
     };
     const copyToClipboard = () => {
