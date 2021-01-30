@@ -8,7 +8,7 @@ function unicodeReplace (txt:string, unicodeStartHex: {upper:string, lower:strin
     for(const c of txt) {
         // default
         let idx = 0;
-        let currentUnicodeStartHex = unicodeStartHex.upper;
+        let currentUnicodeStartHex;
 
         // cases for A-Z, a-z, 0-9
         switch(c) {
@@ -25,10 +25,16 @@ function unicodeReplace (txt:string, unicodeStartHex: {upper:string, lower:strin
                 currentUnicodeStartHex = unicodeStartHex.number;
                 break;
             default:
-                output += c;
-                continue;
+                currentUnicodeStartHex = null;
+                break;
         }
-        output += String.fromCodePoint(parseInt(currentUnicodeStartHex, 16) + idx);
+        if(currentUnicodeStartHex) {
+            output += String.fromCodePoint(parseInt(currentUnicodeStartHex, 16) + idx);
+        }
+        else {
+            // just insert character as is
+            output += c;
+        }
     }
     return output;
 }
