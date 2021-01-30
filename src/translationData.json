@@ -1,0 +1,6 @@
+{
+    "alphaNumericalStartHexes": {
+        "bold": {"upper":"1D400", "lower":"1D41A", "number":"1D7CE"},
+        "italic": {"upper":"1D434", "lower":"1D44E"}
+    }
+}
