@@ -3,7 +3,7 @@ export interface TranslationFunc {
 }
 
 // const alphaNumeric_re = /([A-Z]|[a-z]|[0-9])/g
-function unicodeReplace (txt:string, unicodeStartHex: {upper:string, lower:string, number:string}): string {
+function unicodeAlphanumericReplace (txt:string, unicodeStartHex: {upper:string, lower:string, number:string}): string {
     let output = "";
     for(const c of txt) {
         // default
