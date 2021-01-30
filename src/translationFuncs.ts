@@ -1,34 +1,38 @@
+export interface TranslationFunc {
+    (txt: string): string;
+}
+
 // const alphaNumeric_re = /([A-Z]|[a-z]|[0-9])/g
-function unicodeReplace (txt:string, unicodeStartHexUpper: string, unicodeStartHexLower: string, unicodeStartHexNumber: string): string {
+function unicodeReplace (txt:string, unicodeStartHex: {upper:string, lower:string, number:string}): string {
     let output = "";
     for(const c of txt) {
         // default
         let idx = 0;
-        let unicodeStartHex = unicodeStartHexUpper;
+        let currentUnicodeStartHex = unicodeStartHex.upper;
 
         // cases for A-Z, a-z, 0-9
         switch(c) {
             case (c.match(/[A-Z]/) || {}).input:
                 idx = c.charCodeAt(0) - 65;
-                unicodeStartHex = unicodeStartHexUpper;
+                currentUnicodeStartHex = unicodeStartHex.upper;
                 break;
             case (c.match(/[a-z]/) || {}).input:
                 idx = c.charCodeAt(0) - 97;
-                unicodeStartHex = unicodeStartHexLower;
+                currentUnicodeStartHex = unicodeStartHex.lower;
                 break;
             case (c.match(/[0-9]/) || {}).input:
                 idx = c.charCodeAt(0) - 48;
-                unicodeStartHex = unicodeStartHexNumber;
+                currentUnicodeStartHex = unicodeStartHex.number;
                 break;
             default:
                 output += c;
                 continue;
         }
-        output += String.fromCodePoint(parseInt(unicodeStartHex, 16) + idx);
+        output += String.fromCodePoint(parseInt(currentUnicodeStartHex, 16) + idx);
     }
     return output;
 }
 export const bold = (txt:string): string => {
     // return txt.replace(alphaNumeric_re, '1D400');
-    return unicodeReplace(txt, '1D400', '1D41A', '1D7EC');
+    return unicodeReplace(txt, {upper:'1D400', lower:'1D41A', number:'1D7EC'});
 }

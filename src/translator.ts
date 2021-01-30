@@ -2,7 +2,7 @@ import * as translateFuncs from './translationFuncs';
 
 export default class Translator {
     enabled = true;
-    translateModes: {[key: string]: (txt: string) => string} = {
+    translateModes: {[key: string]: translateFuncs.TranslationFunc} = {
         'bold': translateFuncs.bold,
     };
     
