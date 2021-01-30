@@ -8,7 +8,7 @@ function unicodeReplace (txt:string, unicodeStartHex: {upper:string, lower:strin
     for(const c of txt) {
         // default
         let idx = 0;
-        let currentUnicodeStartHex;
+        let currentUnicodeStartHex: string | undefined | null;
 
         // cases for A-Z, a-z, 0-9
         switch(c) {
