@@ -9,9 +9,7 @@ library.add(faClipboard);
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <TextEditor></TextEditor>
-      </header>
+      <TextEditor></TextEditor>
     </div>
   );
 }

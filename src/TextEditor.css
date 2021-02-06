@@ -1,3 +1,23 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.textBox {
+    padding: 1%;
+    height: 35vh;
+    resize: none;
+}
+
+.inputContainer {
+    display: flex;
+}
+
+.inputText {
+    flex: 1;
+    margin: 2px;
+}
+
 .outputContainer {
     display: flex;
     flex-direction: row;
